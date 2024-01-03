@@ -1,0 +1,15 @@
+﻿@model TwoFactorTypeSelectViewModel
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group mb-3 mt-3">
+                <label for="exampleFormControlSelect1">İki adımlı doğrulama yöntemi seçiniz</label>                
+                <select class="form-control" asp-for="TwoFactorType" asp-items="Html.GetEnumSelectList<TwoFactorType>()"></select>
+            </div>
+            <button type="submit" class="btn btn-danger">Seç</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
