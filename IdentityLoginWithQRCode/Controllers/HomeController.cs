@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace IdentityLoginWithQRCode.Controllers;
 
 public class HomeController : Controller

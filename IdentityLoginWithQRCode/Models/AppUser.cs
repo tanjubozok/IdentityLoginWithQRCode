@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace IdentityLoginWithQRCode.Models;
+﻿namespace IdentityLoginWithQRCode.Models;
 
 public class AppUser : IdentityUser<int>
 {

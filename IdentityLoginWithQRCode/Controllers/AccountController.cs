@@ -1,21 +1,9 @@
-﻿using IdentityLoginWithQRCode.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
+﻿namespace IdentityLoginWithQRCode.Controllers;
 
-namespace IdentityLoginWithQRCode.Controllers;
-
-public class AccountController : Controller
+public class AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager) : Controller
 {
-    private readonly UserManager<AppUser> _userManager;
-    private readonly SignInManager<AppUser> _signInManager;
-
-    public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
-    {
-        _userManager = userManager;
-        _signInManager = signInManager;
-    }
+    private readonly UserManager<AppUser> _userManager = userManager;
+    private readonly SignInManager<AppUser> _signInManager = signInManager;
 
     public IActionResult Login(string ReturnUrl = "")
     {
@@ -53,7 +41,7 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> TwoFactorAuthenticate(TwoFactorLoginViewModel model, string ReturnUrl = "")
     {
-        SignInResult result = null;
+        Microsoft.AspNetCore.Identity.SignInResult result = null;
 
         if (model.Recovery)
             result = await _signInManager.TwoFactorRecoveryCodeSignInAsync(model.VerifyCode);

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace IdentityLoginWithQRCode.Models;
+﻿namespace IdentityLoginWithQRCode.Models;
 
 public enum TwoFactorType
 {

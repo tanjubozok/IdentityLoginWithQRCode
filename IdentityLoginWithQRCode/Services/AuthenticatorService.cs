@@ -1,8 +1,4 @@
-﻿using IdentityLoginWithQRCode.Models;
-using Microsoft.AspNetCore.Identity;
-using System.Text.Encodings.Web;
-
-namespace IdentityLoginWithQRCode.Services;
+﻿namespace IdentityLoginWithQRCode.Services;
 
 public class AuthenticatorService(UserManager<AppUser> userManager, UrlEncoder urlEncoder)
 {

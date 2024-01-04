@@ -1,22 +1,10 @@
-﻿using IdentityLoginWithQRCode.Models;
-using IdentityLoginWithQRCode.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-
-namespace IdentityLoginWithQRCode.Controllers;
+﻿namespace IdentityLoginWithQRCode.Controllers;
 
 [Authorize]
-public class TwoAuthenticationController : Controller
+public class TwoAuthenticationController(AuthenticatorService authenticatorService, UserManager<AppUser> userManager) : Controller
 {
-    private readonly AuthenticatorService _authenticatorService;
-    private readonly UserManager<AppUser> _userManager;
-
-    public TwoAuthenticationController(AuthenticatorService authenticatorService, UserManager<AppUser> userManager)
-    {
-        _authenticatorService = authenticatorService;
-        _userManager = userManager;
-    }
+    private readonly AuthenticatorService _authenticatorService = authenticatorService;
+    private readonly UserManager<AppUser> _userManager = userManager;
 
     public IActionResult SelectTwoFactorAuthentication()
     {
