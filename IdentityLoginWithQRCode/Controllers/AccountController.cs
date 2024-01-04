@@ -7,6 +7,9 @@ public class AccountController(UserManager<AppUser> userManager, SignInManager<A
 
     public IActionResult Login(string ReturnUrl = "")
     {
+        if (User.Identity!.IsAuthenticated)
+            return RedirectToAction(nameof(HomeController), "Index");
+
         return View();
     }
 

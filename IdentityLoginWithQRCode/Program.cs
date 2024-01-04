@@ -1,3 +1,8 @@
+using IdentityLoginWithQRCode.Models;
+using IdentityLoginWithQRCode.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DatabaseContext>(options =>

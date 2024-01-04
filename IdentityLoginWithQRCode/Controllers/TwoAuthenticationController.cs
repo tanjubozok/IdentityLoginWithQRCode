@@ -32,7 +32,7 @@ public class TwoAuthenticationController(AuthenticatorService authenticatorServi
     {
         var user = await _userManager.FindByNameAsync(User.Identity.Name);
         string sharedKey = await _authenticatorService.GenerateSharedKey(user);
-        string qrcodeUri = await _authenticatorService.GenerateQrCodeUri(sharedKey, "www.tanjubozok.com", user);
+        string qrcodeUri = _authenticatorService.GenerateQrCodeUri(sharedKey, "www.tanjubozok.com", user);
 
         return View(new AuthenticatorViewModel
         {

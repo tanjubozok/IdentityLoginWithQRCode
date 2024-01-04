@@ -7,7 +7,7 @@ public class AuthenticatorService(UserManager<AppUser> userManager, UrlEncoder u
 
     public async Task<string> GenerateSharedKey(AppUser user)
     {
-        string sharedKey = await _userManager.GetAuthenticatorKeyAsync(user);
+        var sharedKey = await _userManager.GetAuthenticatorKeyAsync(user);
         if (string.IsNullOrEmpty(sharedKey))
         {
             var result = await _userManager.ResetAuthenticatorKeyAsync(user);
@@ -17,7 +17,7 @@ public class AuthenticatorService(UserManager<AppUser> userManager, UrlEncoder u
         return sharedKey;
     }
 
-    public async Task<string> GenerateQrCodeUri(string sharedKey, string title, AppUser user)
+    public string GenerateQrCodeUri(string sharedKey, string title, AppUser user)
     {
         return $"otpauth://totp/{_urlEncoder.Encode(title)}:{_urlEncoder.Encode(user.Email)}?secret={sharedKey}&issuer={_urlEncoder.Encode(title)}";
     }
